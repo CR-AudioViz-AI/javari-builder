@@ -1,12 +1,1 @@
-{
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "devCommand": "npm run dev",
-  "installCommand": "npm install --force",
-  "framework": null,
-  "github": {
-    "autoAlias": false,
-    "silent": true
-  }
-}
+{"installCommand":"npm install --legacy-peer-deps","framework":"nextjs","buildCommand":"next build","outputDirectory":".next"}
