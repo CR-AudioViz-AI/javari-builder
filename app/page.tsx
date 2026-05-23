@@ -1,11 +1,11 @@
 "use client";
 // app/page.tsx — Javari Builder · CR AudioViz AI · EIN 39-3646201 · May 2026
 import { useState } from "react";
-const T=[{"i": "\ud83d\udd28", "l": "Module Builder", "d": "Create custom modules", "h": "/modules"}, {"i": "\ud83c\udfa8", "l": "Theme Editor", "d": "Customize appearance", "h": "/theme"}, {"i": "\ud83d\udd17", "l": "Integrations", "d": "Connect third-party services", "h": "/integrations"}, {"i": "\ud83d\udccb", "l": "Templates", "d": "Start from templates", "h": "/templates"}];
+const T=[{"i": "\ud83d\udd28", "l": "Module Builder", "d": "Create custom modules", "h": "/modules"}, {"i": "\ud83c\udfa8", "l": "Theme Editor", "d": "Brand customization", "h": "/theme"}, {"i": "\ud83d\udd17", "l": "Integrations", "d": "Connect services", "h": "/integrations"}, {"i": "\ud83d\udccb", "l": "Templates", "d": "Start from templates", "h": "/templates"}];
 export default function P() {
   const [i,setI]=useState(""); const [o,setO]=useState(""); const [l,setL]=useState(false);
   async function go() { if(!i.trim())return; setL(true);setO("");
-    try { const r=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({messages:[{role:"user",content:i}],stream:false,systemOverride:"You are a Javari platform expert. Help users understand how to build custom applications."})});
+    try { const r=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({messages:[{role:"user",content:i}],stream:false,systemOverride:"You are a Javari platform developer assistant."})});
       const d=await r.json(); setO(d?.choices?.[0]?.message?.content||d?.content||"Error.");
     } catch {setO("Error.");} setL(false); }
   return (<div style={{minHeight:"100vh",background:"#040912",color:"#e2e8f0",fontFamily:"system-ui"}}>
@@ -14,12 +14,12 @@ export default function P() {
       <a href="https://craudiovizai.com/auth/signup" style={{background:"#FF0800",color:"#fff",borderRadius:7,padding:"5px 14px",fontSize:12,fontWeight:700,textDecoration:"none"}}>Sign Up Free</a>
     </nav>
     <section style={{background:"linear-gradient(135deg,#1E3A5F,#040912)",padding:"48px 24px 40px",textAlign:"center"}}>
-      <h1 style={{fontSize:"clamp(22px,4vw,42px)",fontWeight:900,color:"#fff",margin:"0 0 10px",lineHeight:1.05}}>Javari<br/><span style={{color:"#1E3A5F"}}>App Builder</span></h1>
-      <p style={{color:"rgba(255,255,255,0.7)",fontSize:15,margin:0}}>Build and customize Javari modules for your specific needs.</p>
+      <h1 style={{fontSize:"clamp(22px,4vw,42px)",fontWeight:900,color:"#fff",margin:"0 0 10px",lineHeight:1.05}}>Javari<br/><span style={{color:"#1E3A5F"}}>Module Builder</span></h1>
+      <p style={{color:"rgba(255,255,255,0.7)",fontSize:15,margin:0}}>Build, customize, and deploy Javari modules for any use case.</p>
     </section>
     <section style={{maxWidth:700,margin:"0 auto",padding:"24px 20px 0"}}>
       <div style={{background:"#0F1F32",border:"1px solid rgba(0,180,216,0.12)",borderRadius:14,padding:"18px 22px"}}>
-        <div style={{display:"flex",gap:8}}><input value={i} onChange={e=>setI(e.target.value)} onKeyDown={e=>e.key==="Enter"&&go()} placeholder="What can I build with the Javari platform?" style={{flex:1,background:"#172D48",border:"1px solid rgba(0,180,216,0.15)",borderRadius:8,padding:"10px 12px",color:"#e2e8f0",fontSize:13,outline:"none",fontFamily:"system-ui"}}/>
+        <div style={{display:"flex",gap:8}}><input value={i} onChange={e=>setI(e.target.value)} onKeyDown={e=>e.key==="Enter"&&go()} placeholder="What can I build with the Javari Module Builder?" style={{flex:1,background:"#172D48",border:"1px solid rgba(0,180,216,0.15)",borderRadius:8,padding:"10px 12px",color:"#e2e8f0",fontSize:13,outline:"none",fontFamily:"system-ui"}}/>
         <button onClick={go} disabled={l||!i.trim()} style={{background:l||!i.trim()?"#0F1F32":"#1E3A5F",color:l||!i.trim()?"#374151":"#1E3A5F",border:"1px solid rgba(0,180,216,0.2)",borderRadius:8,padding:"10px 18px",fontSize:13,fontWeight:700,cursor:l||!i.trim()?"not-allowed":"pointer",fontFamily:"system-ui"}}>{l?"...":"Go"}</button></div>
         {o&&<pre style={{marginTop:12,padding:"12px",background:"rgba(0,180,216,0.05)",border:"1px solid rgba(0,180,216,0.1)",borderRadius:8,fontSize:13,color:"#e2e8f0",lineHeight:1.65,whiteSpace:"pre-wrap",fontFamily:"system-ui",maxHeight:300,overflowY:"auto",margin:"12px 0 0"}}>{o}</pre>}
       </div>
